@@ -5,11 +5,11 @@ import ononline from '../../icons/onlineIcon.png'
 const InfoBar = ({ room }) => (
     <div className='infoBar'>
         <div className='leftInnerContainer'>
-            <img className='onlineIcon' src={ononline} />
+            <img className='onlineIcon' alt='online' src={ononline} />
             <h3>{room}</h3>
         </div>
         <div className='rightInnerContainer'>
-            <a href='/'><img src={closeIcon} alt='close imae' /></a>
+            <a href='/'><img src={closeIcon} alt='close' /></a>
         </div></div>
 )
 export default InfoBar;

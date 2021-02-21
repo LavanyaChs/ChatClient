@@ -9,7 +9,7 @@ import TextContainer from '../TextContainer/TextContainer';
 
 let socket;
 // const ENDPOINT = `localhost:5000`
-const ENDPOINT = `https://lavanyachs-chat-app.herokuapp.com/`;
+//const ENDPOINT = `https://lavanyachs-chat-app.herokuapp.com/`;
 const Chat = ({ location }) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('')
@@ -18,7 +18,7 @@ const Chat = ({ location }) => {
     const [users, setUsers] = useState([]);
     useEffect(() => {
         const { name, room } = queryString.parse(location.search);
-        socket = io(ENDPOINT);
+        socket = io(process.env.ENDPOINT);
         setName(name);
         setRoom(room);
         // console.log(socket);
@@ -29,7 +29,7 @@ const Chat = ({ location }) => {
             socket.emit('disconnect');
             socket.off();
         }
-    }, [ENDPOINT, location.search]);
+    }, [location.search]);
 
     useEffect(() => {
         socket.on('message', (message) => {
