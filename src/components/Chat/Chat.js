@@ -10,6 +10,8 @@ import TextContainer from '../TextContainer/TextContainer';
 let socket;
 // const ENDPOINT = `localhost:5000`
 //const ENDPOINT = `https://lavanyachs-chat-app.herokuapp.com/`;
+let ENDPOINT = process.env.REACT_APP_ENDPOINT;
+
 const Chat = ({ location }) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('')
@@ -18,7 +20,7 @@ const Chat = ({ location }) => {
     const [users, setUsers] = useState([]);
     useEffect(() => {
         const { name, room } = queryString.parse(location.search);
-        socket = io(process.env.ENDPOINT);
+        socket = io(ENDPOINT);
         setName(name);
         setRoom(room);
         // console.log(socket);
@@ -55,6 +57,7 @@ const Chat = ({ location }) => {
             <InfoBar room={room} />
             <Messages messages={messages} name={name} />
             <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+
         </div>
         <TextContainer users={users} />
     </div>)
